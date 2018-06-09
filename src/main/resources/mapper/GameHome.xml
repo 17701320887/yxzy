@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.active.dao.GameHomeMapper">
+    <resultMap id="BaseResultMap" type="com.active.model.GameHome">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="id" jdbcType="BIGINT" property="id" />
+        <id column="user_id" jdbcType="BIGINT" property="userId" />
+        <result column="game_pwd" jdbcType="VARCHAR" property="gamePwd" />
+        <result column="name" jdbcType="VARCHAR" property="name" />
+        <result column="create_time" jdbcType="VARCHAR" property="createTime" />
+    </resultMap>
+
+    <insert id="save" parameterType="com.active.model.GameHome" useGeneratedKeys="true" keyProperty="id">
+        insert into game_home(user_id,name,game_pwd,create_time) VALUES (#{userId},#{name},#{gamePwd},#{createTime})
+    </insert>
+    <select id="findByPwd" resultType="com.active.model.GameHome" parameterType="string">
+        SELECT
+        h.id,h.name,h.game_pwd,h.create_time
+        FROM
+        game_home h
+        WHERE  h.game_pwd=#{gamePwd}
+    </select>
+    <select id="findByName" resultType="com.active.model.GameHome" parameterType="string">
+        SELECT
+        h.id
+        FROM
+        game_home h
+        WHERE  h.name=#{name}
+    </select>
+</mapper>

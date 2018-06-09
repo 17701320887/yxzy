@@ -1,0 +1,119 @@
+html,body,div,p{
+    margin: 0;
+    padding: 0;
+}
+.header-content{
+    position: absolute;
+    width: 90%;
+    margin: 0px auto;
+    height: 60px;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    padding: 20px 5%;
+}
+.header-icon{
+    position: relative;
+    width: 170px;
+    height: 56px;
+}
+.header-icon img{
+    width: 170px;
+}
+.header-menu{
+    font-size: 16px;
+    color: #fff;
+    line-height: 56px;
+}
+.header-menu span{
+    display: inline-block;
+    margin-left: 40px;
+    cursor: pointer;
+}
+.choose_menu{
+    color: #1989fb;
+}
+.header-text{
+    width: 100%;
+    height: 200px;
+    text-align: center;
+    top: 50%;
+    margin-top: -100px;
+    position: absolute;
+    z-index: 2;
+    color: #fff;
+}
+.header-text p{
+    margin-top: 10px;
+}
+.read-me-span{
+    display: inline-block;
+    width:200px;
+    height:50px;
+    line-height: 50px;
+    background-color: #e60012;
+    border-radius: 10px;
+    margin-top: 40px;
+    cursor: pointer;
+}
+.blurb{
+    padding: 50px 0px;
+    background: #fff;
+    width: 1190px;
+    margin: 0px auto;
+}
+.blurb p{
+    text-align: center;
+}
+.index-icon{
+    padding-bottom: 50px;
+    width: 940px;
+    margin: 0px auto;
+}
+.index-icon-group{
+    clear: both;
+    width: 100%;
+    height: 150px;
+    margin-bottom: 20px;
+}
+.index-icon-module{
+    float: left;
+    width: 350px;
+    height: 150px;
+    display: flex;
+}
+.index-icon-module >div{
+    float: left;
+}
+.index-icon-module-img{
+    width: 140px;
+    height: 150px;
+    background: url("../images/index-icon.png") no-repeat;
+}
+.index-icon-module-text{
+    display: inline-flex;
+    flex: 1;
+    align-items: center;
+    justify-content: left;
+    height: 140px;
+    font-size: 16px;
+    color: #595757;
+}
+.index-bg-one{
+    width: 100%;
+    position: relative;
+}
+.index-bg-al{
+    position: absolute;
+    top: 50%;
+    margin-top: -210px;
+    width: 100%;
+    height: 400px;
+}
+.index-bg-al-title{
+    color: #fff;
+    text-align: center;
+}
+.effect-lily{
+    border-radius: 5px;
+}

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.active.dao.GameConfigMapper">
+    <resultMap id="BaseResultMap" type="com.active.model.GameConfig">
+        <id column="id" jdbcType="BIGINT" property="id" />
+        <result column="home_user_num" jdbcType="BIGINT" property="homeUserNum" />
+    </resultMap>
+
+    <update id="update" parameterType="long">
+        update config SET home_user_num=#{homeUserNum} where id=1
+    </update>
+
+    <select id="findNum" resultType="long">
+        SELECT
+        c.home_user_num
+        FROM
+        config c
+        WHERE  c.id=1
+    </select>
+</mapper>

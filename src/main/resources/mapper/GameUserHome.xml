@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.active.dao.GameUserHomeMapper">
+    <resultMap id="BaseResultMap" type="com.active.model.GameUserHome">
+        <id column="id" jdbcType="BIGINT" property="id" />
+        <result column="user_id" jdbcType="BIGINT" property="userId" />
+        <result column="home_id" jdbcType="BIGINT" property="homeId" />
+        <result column="join_time" jdbcType="VARCHAR" property="joinTime" />
+    </resultMap>
+
+    <insert id="save" parameterType="com.active.model.GameUserHome" useGeneratedKeys="true" keyProperty="id">
+        insert into game_user_home(user_id,home_id,join_time) VALUES (#{userId},#{homeId},#{joinTime})
+    </insert>
+
+    <select id="findByHomeId" resultMap="BaseResultMap" parameterType="long">
+        SELECT
+            uh.id
+        FROM
+        game_user_home uh
+        WHERE  uh.home_id=#{homeId}
+    </select>
+
+    <select id="findByUserId" resultMap="BaseResultMap" parameterType="long">
+        SELECT
+            uh.id
+        FROM
+        game_user_home uh
+        WHERE  uh.user_id=#{userId}
+    </select>
+</mapper>

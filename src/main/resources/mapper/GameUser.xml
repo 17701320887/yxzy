@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.active.dao.GameUserMapper">
+    <resultMap id="BaseResultMap" type="com.active.model.GameUser">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="id" jdbcType="BIGINT" property="id" />
+        <result column="token" jdbcType="VARCHAR" property="token" />
+        <result column="user_ip" jdbcType="VARCHAR" property="userIp" />
+        <result column="create_time" jdbcType="VARCHAR" property="createTime" />
+    </resultMap>
+
+    <insert id="save" parameterType="com.active.model.GameUser" useGeneratedKeys="true" keyProperty="id">
+        insert into game_user(token,create_time,user_ip) VALUES (#{token},#{createTime},#{userIp})
+    </insert>
+
+    <select id="findByToken" resultMap="BaseResultMap" parameterType="string">
+        SELECT
+        u.id
+        FROM
+        game_user u
+        WHERE  u.token=#{token}
+    </select>
+    <resultMap type="com.active.model.GameUserDto" id="gameUserDto">
+        <id property="id" column="id"/>
+        <result property="token" column="token"/>
+        <result property="createTime" column="createTime"/>
+        <result property="name" column="name"/>
+        <result property="userIp" column="userIp"/>
+        <result property="homeUserId" column="homeUserId"/>
+    </resultMap>
+    <select id="findAllUser" resultMap="gameUserDto">
+        SELECT
+        u.id as id,u.token as token,u.create_time as createTime,h.name as name,h.user_id as homeUserId,u.user_ip as userIp
+        FROM
+        game_user u
+        left join game_user_home uh on uh.user_id = u.id
+        left join game_home h on h.id = uh.home_id
+        order by u.create_time desc
+    </select>
+    <select id="findUserDay" resultMap="gameUserDto">
+        SELECT
+        u.id as id,u.token as token,u.create_time as createTime,h.name as name,h.user_id as homeUserId,u.user_ip as userIp
+        FROM
+        game_user u
+        left join game_user_home uh on uh.user_id = u.id
+        left join game_home h on h.id = uh.home_id
+        where date(u.create_time) = curdate()
+        order by u.create_time desc
+    </select>
+</mapper>

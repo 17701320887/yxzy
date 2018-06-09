@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.active.dao.LoginUsersMapper">
+    <resultMap id="BaseResultMap" type="com.active.model.LoginUsers">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="id" jdbcType="BIGINT" property="id" />
+        <result column="username" jdbcType="VARCHAR" property="username" />
+        <result column="mobile" jdbcType="VARCHAR" property="mobile" />
+        <result column="password" jdbcType="VARCHAR" property="password" />
+        <result column="last_login_time" jdbcType="VARCHAR" property="lastLoginTime" />
+        <result column="last_ip" jdbcType="VARCHAR" property="lastIp" />
+    </resultMap>
+
+    <insert id="save" parameterType="com.active.model.LoginUsers" useGeneratedKeys="true" keyProperty="id">
+        insert into login_users(username,mobile,password,last_login_time,last_ip) VALUES (#{username},#{mobile},#{password},#{lastLoginTime},#{lastIp})
+    </insert>
+
+    <update id="update" parameterType="com.active.model.LoginUsers">
+        update login_users SET last_login_time=#{lastLoginTime},last_ip=#{lastIp} where id=#{id}
+    </update>
+
+    <select id="findUserByMP" resultType="com.active.model.LoginUsers" parameterType="java.util.Map">
+        SELECT
+        u.id,u.username,u.mobile,u.password
+        FROM
+        login_users u
+        WHERE  u.mobile=#{mobile} and u.password=#{password}
+    </select>
+</mapper>
